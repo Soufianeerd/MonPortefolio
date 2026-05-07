@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeddingSuite Pro | THE ULTIMATE FUSION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Alex+Brush&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/lucide@latest/dist/umd/lucide.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="builder-container">
+        <!-- Sidebar Customizer -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <div class="logo">
+                    <i data-lucide="heart-handshake"></i>
+                    <span>Wedding<span>Suite</span></span>
+                </div>
+                <div class="version">FINAL FUSION v3.0</div>
+            </header>
+
+            <nav class="builder-tabs">
+                <button class="tab-btn active" data-tab="design" title="Style"><i data-lucide="palette"></i></button>
+                <button class="tab-btn" data-tab="content" title="Textes"><i data-lucide="edit-3"></i></button>
+                <button class="tab-btn" data-tab="media" title="Photos"><i data-lucide="image"></i></button>
+                <button class="tab-btn" data-tab="settings" title="API"><i data-lucide="key"></i></button>
+            </nav>
+
+            <div class="sidebar-scrollable">
+                <!-- DESIGN TAB -->
+                <div class="tab-content" id="designTab">
+                    <div class="config-group">
+                        <label>Thèmes Premium</label>
+                        <div class="theme-grid">
+                            <div class="theme-option active" data-theme="royal">
+                                <div class="theme-preview" style="background: #5D262C;"></div>
+                                <span>Royal Bordeaux</span>
+                            </div>
+                            <div class="theme-option" data-theme="midnight">
+                                <div class="theme-preview" style="background: #1C3A5A;"></div>
+                                <span>Midnight Blue</span>
+                            </div>
+                            <div class="theme-option" data-theme="sage">
+                                <div class="theme-preview" style="background: #9CAF88;"></div>
+                                <span>Sage Garden</span>
+                            </div>
+                            <div class="theme-option" data-theme="gold">
+                                <div class="theme-preview" style="background: #D4AF37;"></div>
+                                <span>Golden Sands</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-group">
+                        <label>Couleurs & Typo</label>
+                        <div class="color-controls">
+                            <div class="color-item">
+                                <input type="color" id="colorAccent" value="#5D262C">
+                                <div class="color-meta"><span>Accent</span><small id="valAccent">#5D262C</small></div>
+                            </div>
+                            <div class="color-item">
+                                <input type="color" id="colorBg" value="#F9F7F2">
+                                <div class="color-meta"><span>Fond</span><small id="valBg">#F9F7F2</small></div>
+                            </div>
+                        </div>
+                        <select id="fontSerif" class="builder-select" style="margin-top:1rem">
+                            <option value="'Cormorant Garamond'">Cormorant Garamond</option>
+                            <option value="'Playfair Display'">Playfair Display</option>
+                            <option value="'EB Garamond'">EB Garamond</option>
+                            <option value="'Alex Brush'">Alex Brush (Manuscript)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- CONTENT TAB -->
+                <div class="tab-content hidden" id="contentTab">
+                    <div class="config-group">
+                        <label>Identité de l'Événement</label>
+                        <input type="text" id="name1" value="Alexandre" class="builder-input" placeholder="Marié 1">
+                        <input type="text" id="name2" value="Sophie" class="builder-input" placeholder="Marié 2" style="margin-top:0.5rem">
+                        <input type="date" id="eventDate" value="2026-06-20" class="builder-input" style="margin-top:1rem">
+                        <textarea id="venue" class="builder-input" rows="2" style="margin-top:0.5rem">Château de la Verrière, Versailles</textarea>
+                    </div>
+                </div>
+
+                <!-- MEDIA TAB -->
+                <div class="tab-content hidden" id="mediaTab">
+                    <div class="config-group">
+                        <label>Unsplash PRO Search</label>
+                        <div class="search-bar">
+                            <input type="text" id="imageSearch" placeholder="Rechercher..." class="builder-input">
+                            <button id="searchImages" class="btn-search"><i data-lucide="search"></i></button>
+                        </div>
+                        <div id="imageResults" class="image-grid"></div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS TAB -->
+                <div class="tab-content hidden" id="settingsTab">
+                    <div class="config-group">
+                        <label>Unsplash Access Key</label>
+                        <input type="password" id="unsplashKey" value="5wKdoMiPs6mPwJ4AYt7bfWg6Od8dS3blnMCNSChAnO8" class="builder-input">
+                        <p class="help-text">Utilisée pour le chargement des médias haute résolution.</p>
+                    </div>
+                    <div class="config-group">
+                        <label>Modules Connectés</label>
+                        <ul class="status-list">
+                            <li><i data-lucide="check" class="text-success"></i> Faire-part Sync</li>
+                            <li><i data-lucide="check" class="text-success"></i> Livre d'Or Sync</li>
+                            <li><i data-lucide="check" class="text-success"></i> Galerie Photos Sync</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="sidebar-footer">
+                <button class="btn btn-save" id="saveProject">
+                    <span>Appliquer à toute la Suite</span>
+                    <i data-lucide="zap"></i>
+                </button>
+            </footer>
+        </aside>
+
+        <!-- Preview Area -->
+        <main class="preview-area">
+            <header class="preview-header">
+                <div class="module-tabs">
+                    <button class="module-btn active" data-src="invitation/index.html">Faire-part</button>
+                    <button class="module-btn" data-src="livre-or-audio/index.html">Livre d'Or</button>
+                    <button class="module-btn" data-src="livre-photos/index.html">Galerie</button>
+                </div>
+                <div class="preview-actions">
+                    <div class="device-toggles">
+                        <button class="device-btn active" data-device="mobile"><i data-lucide="smartphone"></i></button>
+                        <button class="device-btn" data-device="tablet"><i data-lucide="tablet"></i></button>
+                        <button class="device-btn" data-device="desktop"><i data-lucide="monitor"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="iframe-container mobile" id="iframeWrapper">
+                <div class="iframe-inner">
+                    <iframe id="previewFrame" src="invitation/index.html"></iframe>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+    <script src="js/builder.js"></script>
+    <script src="../_shared/portfolio-bar.js" defer></script>
+</body>
+</html>

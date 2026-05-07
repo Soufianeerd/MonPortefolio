@@ -939,7 +939,34 @@
   document.getElementById('nameInput').addEventListener('input', () => {
     document.getElementById('nameInput').classList.remove('error');
   });
+  /* ═══════════════════════════════════════════════════════
+     BRIDGE FOR BUILDER FUSION
+     ═══════════════════════════════════════════════════════ */
+  window.addEventListener('message', (event) => {
+    if (event.data.type === 'UPDATE_DESIGN') {
+      const data = event.data.payload;
+      const root = document.documentElement;
+
+      if (data.colors) {
+        root.style.setProperty('--cream', data.colors.bg);
+        root.style.setProperty('--bordeaux', data.colors.accent);
+      }
+      if (data.font) {
+        root.style.setProperty('--font-serif', `${data.font}, serif`);
+      }
+      if (data.content) {
+        if (data.content.name1 && data.content.name2) {
+          const titles = document.querySelectorAll('.header__title, .header__sub, .footer-text');
+          titles.forEach(el => {
+            if (el.tagName === 'H1') el.innerHTML = `Photos<br><em>Souvenirs</em>`;
+            else el.textContent = `${data.content.name1} & ${data.content.name2} · ${new Date(data.content.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+          });
+        }
+      }
+    }
+  });
   </script>
+  <script src="../../_shared/portfolio-bar.js" defer></script>
 
 </body>
 </html>

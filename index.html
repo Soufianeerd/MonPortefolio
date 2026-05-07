@@ -4,378 +4,727 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soufiane EL RHADI | MIAGE • Business Analyst • Data • Dev Web</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link href="https://unpkg.com/lucide@latest/dist/umd/lucide.css" rel="stylesheet">
+    <title>Soufiane EL RHADI — MIAGE · Business Analyst · Développeur Full-Stack</title>
+    <meta name="description" content="Portfolio de Soufiane EL RHADI — Étudiant MIAGE (Nancy), spécialisé dans les systèmes d'information, l'analyse fonctionnelle, l'automatisation IA et le développement web. 20+ projets : data dashboards, e-commerce, automatisation, applications mobiles.">
+    <meta name="author" content="Soufiane EL RHADI">
+    <meta name="theme-color" content="#d97757">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Soufiane EL RHADI — MIAGE · Business Analyst · Développeur">
+    <meta property="og:description" content="Étudiant MIAGE — Business Analyst & Développeur. 20+ projets : data, dashboards, automatisation IA, applications mobiles, e-commerce.">
+    <meta property="og:url" content="https://soufiane-elrhadi.dev/">
+    <meta property="og:image" content="og-cover.svg">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Soufiane EL RHADI — MIAGE · Business Analyst · Développeur">
+    <meta name="twitter:description" content="Portfolio — 20+ projets data, web, automatisation IA.">
+    <meta name="twitter:image" content="og-cover.svg">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://soufiane-elrhadi.dev/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Background Elements -->
-    <div class="glow-orb" style="top: -10%; left: -5%; background: #6366f1;"></div>
-    <div class="glow-orb" style="bottom: -10%; right: -5%; background: #ec4899;"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob--1" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob--2" aria-hidden="true"></div>
 
-    <nav class="navbar glass">
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" aria-hidden="true"><div id="scrollProgressBar"></div></div>
+
+    <nav class="navbar" aria-label="Navigation principale">
         <div class="nav-content">
-            <div class="logo">
-                <span class="text-gradient">S. EL RHADI</span>
-            </div>
-            <div class="nav-links desktop-menu">
-                <a href="#about" class="nav-link">À Propos</a>
-                <a href="#skills" class="nav-link">Compétences</a>
+            <a href="#hero" class="logo" aria-label="Retour en haut">
+                S. EL RHADI<span>.</span>
+            </a>
+            <div class="nav-links">
+                <a href="#profil" class="nav-link">Profil</a>
+                <a href="#competences" class="nav-link">Compétences</a>
                 <a href="#projects" class="nav-link">Projets</a>
-                <a href="#templates" class="nav-link">Templates</a>
-                <a href="#contact" class="nav-link btn-primary">Me Contacter</a>
+                <a href="#parcours" class="nav-link">Parcours</a>
+                <a href="#contact" class="nav-link btn-contact">Contact</a>
             </div>
-            <button class="mobile-menu-btn" id="menuToggle">
-                <i data-lucide="menu"></i>
+            <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu glass" id="mobileMenu">
-        <a href="#about" class="nav-link active">À Propos</a>
-        <a href="#skills" class="nav-link">Compétences</a>
-        <a href="#projects" class="nav-link">Projets</a>
-        <a href="#templates" class="nav-link">Templates</a>
-        <a href="#contact" class="nav-link btn-primary">Me Contacter</a>
-    </div>
-
     <main>
-        <!-- Hero Section -->
+        <!-- ============================================================
+             HERO
+             ============================================================ -->
         <section id="hero" class="hero">
             <div class="hero-content">
-                <div class="badge glass">
-                    <span class="pulse-dot"></span>
-                    Alternance recherchée • Dès septembre 2026
+                <div class="badge">
+                    <span class="pulse-dot" aria-hidden="true"></span>
+                    Disponible &middot; Master MIAGE Sept. 2026
                 </div>
                 <h1 class="hero-title">
-                    Analyse, Produit, Data & <br>
-                    <span class="text-gradient">Solutions digitales utiles</span>
+                    Analyse <span class="highlight">Business</span>,<br>
+                    Data &amp; Code.
                 </h1>
                 <p class="hero-desc">
-                    Étudiant MIAGISTE orienté Business Analyst, gestion de projet SI, automatisation IA,
-                    support applicatif et développement web. J’interviens sur des sujets mêlant compréhension
-                    métier, coordination IT, data et mise en œuvre technique.
+                    Étudiant MIAGE à Nancy, à l'interface entre <em>équipes métiers</em> et <em>équipes techniques</em>.
+                    Je conçois des solutions digitales — du recueil de besoins jusqu'au déploiement —
+                    avec une exigence de design, de performance et de cohérence.
                 </p>
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary btn-lg">Découvrir mes projets</a>
-                    <a href="https://www.linkedin.com/in/soufiane-el-rhadi-217119293/" target="_blank"
-                        class="btn btn-outline btn-lg glass">
-                        <i data-lucide="linkedin"></i> LinkedIn
+                    <a href="#projects" class="btn btn-primary">Voir mes projets <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter <i data-lucide="mail" aria-hidden="true"></i></a>
+                </div>
+                <div class="hero-stats" aria-label="Statistiques portfolio">
+                    <div class="stat"><strong data-counter="20" data-suffix="+">0</strong><span>Projets livrés</span></div>
+                    <div class="stat"><strong data-counter="3">0</strong><span>Stages / alternances</span></div>
+                    <div class="stat"><strong data-counter="4" data-suffix="">0</strong><span>Langues parlées</span></div>
+                    <div class="stat"><strong data-counter="2026" data-noformat="1">0</strong><span>Disponible</span></div>
+                </div>
+            </div>
+
+            <!-- Skills marquee -->
+            <div class="skills-marquee" aria-hidden="true">
+                <div class="marquee-track">
+                    <span>Recueil de besoins</span><span>·</span>
+                    <span>User stories</span><span>·</span>
+                    <span>KPIs</span><span>·</span>
+                    <span>Agile / Scrum</span><span>·</span>
+                    <span>Python</span><span>·</span>
+                    <span>SQL · PostgreSQL</span><span>·</span>
+                    <span>API REST</span><span>·</span>
+                    <span>HTML/CSS/JS</span><span>·</span>
+                    <span>Java</span><span>·</span>
+                    <span>Git / GitHub</span><span>·</span>
+                    <span>n8n · Apps Script</span><span>·</span>
+                    <span>Postman</span><span>·</span>
+                    <!-- duplicate for seamless loop -->
+                    <span>Recueil de besoins</span><span>·</span>
+                    <span>User stories</span><span>·</span>
+                    <span>KPIs</span><span>·</span>
+                    <span>Agile / Scrum</span><span>·</span>
+                    <span>Python</span><span>·</span>
+                    <span>SQL · PostgreSQL</span><span>·</span>
+                    <span>API REST</span><span>·</span>
+                    <span>HTML/CSS/JS</span><span>·</span>
+                    <span>Java</span><span>·</span>
+                    <span>Git / GitHub</span><span>·</span>
+                    <span>n8n · Apps Script</span><span>·</span>
+                    <span>Postman</span><span>·</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PROFIL — Objectif & présentation
+             ============================================================ -->
+        <section id="profil" class="section">
+            <div class="section-header">
+                <h2>Profil<span>.</span></h2>
+                <p class="section-subtitle">L'analyste fonctionnel qui sait coder. Le développeur qui comprend le business.</p>
+            </div>
+
+            <div class="profil-grid">
+                <article class="profil-card profil-card--main">
+                    <div class="profil-avatar" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" width="64" height="64">
+                            <rect width="64" height="64" rx="14" fill="#1c1917"/>
+                            <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle"
+                                  font-family="Outfit, system-ui, sans-serif" font-weight="900" font-size="34"
+                                  fill="#faf7f2" letter-spacing="-2">S</text>
+                            <circle cx="50" cy="48" r="4" fill="#d97757"/>
+                        </svg>
+                        <div class="profil-headline">
+                            <span class="profil-name">Soufiane EL RHADI</span>
+                            <span class="profil-role">Étudiant MIAGE — Gestionnaire IT &middot; Automatisation IA &middot; Data &middot; Support applicatif</span>
+                        </div>
+                    </div>
+
+                    <p class="profil-text">
+                        Je recherche une admission en <strong>Master MIAGE — parcours Science des Données</strong> à partir de septembre 2026.
+                        Dans ce cadre, je souhaite m'impliquer dans des projets liés aux <em>systèmes d'information</em> et à la <em>data</em>,
+                        en développant des compétences en analyse fonctionnelle, en coordination IT et en compréhension des enjeux techniques et organisationnels.
+                    </p>
+                    <p class="profil-text">
+                        Ouvert aux dimensions <strong>fonctionnelles, produit et techniques</strong> — notamment en développement web et en analyse de données —
+                        mon objectif est d'acquérir une vision globale des systèmes d'information et d'évoluer vers un rôle d'<em>interface</em>
+                        entre les équipes métiers et techniques.
+                    </p>
+
+                    <div class="profil-meta">
+                        <div class="profil-meta-item">
+                            <i data-lucide="map-pin" aria-hidden="true"></i>
+                            <span>Nancy / Metz &middot; Paris &middot; Luxembourg</span>
+                        </div>
+                        <div class="profil-meta-item">
+                            <i data-lucide="briefcase" aria-hidden="true"></i>
+                            <span>Alternance Proximus Lux. — depuis Nov. 2025</span>
+                        </div>
+                        <div class="profil-meta-item">
+                            <i data-lucide="graduation-cap" aria-hidden="true"></i>
+                            <span>L3 MIAGE — IDMC Nancy</span>
+                        </div>
+                    </div>
+                </article>
+
+                <aside class="profil-card profil-card--side">
+                    <h3 class="profil-side-title">Domaines de prédilection</h3>
+                    <ul class="profil-domains">
+                        <li>
+                            <i data-lucide="bar-chart-3" aria-hidden="true"></i>
+                            <div>
+                                <strong>Business Analysis</strong>
+                                <span>Recueil de besoins, user stories, KPIs, Agile/Scrum</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="database" aria-hidden="true"></i>
+                            <div>
+                                <strong>Data &amp; SQL</strong>
+                                <span>PostgreSQL, requêtes, dashboards, viz</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="zap" aria-hidden="true"></i>
+                            <div>
+                                <strong>Automatisation IA</strong>
+                                <span>n8n, ETL, Apps Script, scripts Python</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="code-2" aria-hidden="true"></i>
+                            <div>
+                                <strong>Développement Web</strong>
+                                <span>HTML/CSS/JS, Next.js, Node.js, API REST</span>
+                            </div>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             COMPÉTENCES (Fonctionnel / Technique / Langues)
+             ============================================================ -->
+        <section id="competences" class="section">
+            <div class="section-header">
+                <h2>Compétences<span>.</span></h2>
+                <p class="section-subtitle">Trois piliers — fonctionnel, technique, linguistique.</p>
+            </div>
+
+            <div class="comp-grid">
+                <article class="comp-card">
+                    <div class="comp-header">
+                        <i data-lucide="target" aria-hidden="true"></i>
+                        <h3>Fonctionnel</h3>
+                    </div>
+                    <ul class="comp-list">
+                        <li>Recueil de besoins</li>
+                        <li>Ateliers / Personas</li>
+                        <li>User stories</li>
+                        <li>Conduite du changement</li>
+                        <li>KPIs &amp; reporting</li>
+                        <li>Gestion de projet</li>
+                        <li>Agile (Scrum)</li>
+                        <li>Kanban / Jira</li>
+                        <li>Roadmap</li>
+                    </ul>
+                </article>
+
+                <article class="comp-card">
+                    <div class="comp-header">
+                        <i data-lucide="terminal" aria-hidden="true"></i>
+                        <h3>Technique</h3>
+                    </div>
+                    <ul class="comp-list">
+                        <li>API REST</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>SQL · PostgreSQL</li>
+                        <li>HTML / CSS / JS</li>
+                        <li>Next.js / Node.js</li>
+                        <li>Git / GitHub</li>
+                        <li>Pack Office / Excel</li>
+                        <li>Notions COBOL</li>
+                    </ul>
+                </article>
+
+                <article class="comp-card">
+                    <div class="comp-header">
+                        <i data-lucide="languages" aria-hidden="true"></i>
+                        <h3>Langues</h3>
+                    </div>
+                    <ul class="comp-langs">
+                        <li>
+                            <div class="lang-meta"><strong>Français</strong><span>Natif</span></div>
+                            <div class="lang-bar"><div class="lang-fill" style="--w: 100%"></div></div>
+                        </li>
+                        <li>
+                            <div class="lang-meta"><strong>Anglais</strong><span>B2</span></div>
+                            <div class="lang-bar"><div class="lang-fill" style="--w: 75%"></div></div>
+                        </li>
+                        <li>
+                            <div class="lang-meta"><strong>Arabe</strong><span>B1</span></div>
+                            <div class="lang-bar"><div class="lang-fill" style="--w: 55%"></div></div>
+                        </li>
+                        <li>
+                            <div class="lang-meta"><strong>Chinois</strong><span>A1</span></div>
+                            <div class="lang-bar"><div class="lang-fill" style="--w: 25%"></div></div>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PROJETS
+             ============================================================ -->
+        <section id="projects" class="section">
+            <div class="section-header section-header--row">
+                <div>
+                    <h2>Projets<span>.</span></h2>
+                    <p class="section-subtitle">20+ projets — data, web, automatisation, mobile. Cliquez pour explorer.</p>
+                </div>
+                <div class="project-controls">
+                    <div class="project-search">
+                        <i data-lucide="search" aria-hidden="true"></i>
+                        <input type="text" id="projectSearch" placeholder="Rechercher un projet…" aria-label="Rechercher un projet">
+                    </div>
+                    <div class="theme-filter" role="tablist" aria-label="Filtrer les projets par thème">
+                        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Tous</button>
+                        <button class="filter-btn" data-filter="business" role="tab" aria-selected="false">Business &amp; Data</button>
+                        <button class="filter-btn" data-filter="luxury" role="tab" aria-selected="false">Luxe &amp; Food</button>
+                        <button class="filter-btn" data-filter="tech" role="tab" aria-selected="false">Tech &amp; Outils</button>
+                        <button class="filter-btn" data-filter="creative" role="tab" aria-selected="false">Créatif &amp; Event</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+
+                <article class="project-card highlight-card" data-category="business tech" data-search="analyse santé health flask python c++ daemon biométrique monitoring temps réel simulateur capteur">
+                    <div class="project-visual">
+                        <img src="assets/AnalyticSante.png" alt="Aperçu du dashboard Analyse Santé — monitoring biométrique en temps réel" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <h3>Analyse Santé</h3>
+                        <p>Monitoring biométrique temps réel — frontend simulateur (HTML/CSS/JS) + backend full-stack (Flask Python + daemon C++ + capteur).</p>
+                        <a href="projects/AnalyseSante/index.html" class="project-link">Tester l'outil <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card highlight-card" data-category="luxury creative" data-search="tanti gusti restaurant italien menu qr code digital">
+                    <div class="project-visual">
+                        <img src="assets/TantiGusti2.jpg" alt="Aperçu du menu digital Tanti Gusti — restaurant italien" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <h3>Tanti Gusti</h3>
+                        <p>Écosystème digital pour restaurant italien : menu interactif et intégration QR code.</p>
+                        <a href="projects/TantiGusti/MenuTanti/index.html" class="project-link">Voir le menu <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card highlight-card" data-category="business tech" data-search="world cup wc analytics 2026 football coupe du monde xi titulaires dashboard interactif">
+                    <div class="project-visual">
+                        <img src="assets/AnalyticWorldCup.jpg" alt="Aperçu de WC Analytics 2026 — dashboard XI titulaires Coupe du Monde" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <h3>WC Analytics 2026</h3>
+                        <p>Dashboard interactif analysant les XI titulaires des Coupes du Monde 1998-2026 — filtres, charts, exploration.</p>
+                        <a href="projects/world-cup-dashboard/index.html" class="project-link">Explorer le dashboard <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="tech business" data-search="iapsal calculateur brut net luxembourg fiscalité swift flutter ios android">
+                    <div class="project-visual">
+                        <img src="assets/iApsal.png" alt="Aperçu de l'app iApsal — calculateur Brut/Net Luxembourg" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">App Mobile &middot; Fiscalité LUX</span>
+                        <h3>iApsal</h3>
+                        <p>Calculateur Brut/Net pour salaires luxembourgeois (règles 2026) — Swift iOS d'origine, migration Flutter cross-platform.</p>
+                        <a href="projects/iApsal/index.html" class="project-link">Voir l'app <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="luxury creative" data-search="la perle noire restaurant gastronomique oriental halal luxe">
+                    <div class="project-visual">
+                        <img src="assets/LaperleNoire.png" alt="Identité visuelle La Perle Noire — restaurant gastronomique fusion halal" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Luxury Branding</span>
+                        <h3>La Perle Noire</h3>
+                        <p>Identité numérique prestigieuse pour un restaurant gastronomique oriental fusion halal.</p>
+                        <a href="projects/LaPerleNoire/index.html" class="project-link">Voir le projet <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="business tech" data-search="kartell saas dashboard admin commandes inventaire">
+                    <div class="project-visual">
+                        <img src="assets/Kartell.svg" alt="Aperçu de Kartell Admin — dashboard de gestion de commandes" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">SaaS Dashboard</span>
+                        <h3>Kartell Admin</h3>
+                        <p>Solution de gestion de commandes et monitoring d'inventaire avec interfaces admin et client.</p>
+                        <a href="projects/Kartell/index.html" class="project-link">Lancer l'app <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="creative luxury" data-search="sina production photographe portfolio photo minimaliste">
+                    <div class="project-visual">
+                        <img src="assets/SinaProduction.jpg" alt="Aperçu du portfolio photo Sina Production" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Portfolio Photo</span>
+                        <h3>Sina Production</h3>
+                        <p>Expérience visuelle minimaliste et chaleureuse pour photographe professionnel.</p>
+                        <a href="projects/SinaProduction/index.html" class="project-link">Découvrir <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="business" data-search="garage 2a immatriculation siv carte grise stripe paiement nancy">
+                    <div class="project-visual">
+                        <img src="assets/Garage2A.png" alt="Aperçu de la plateforme Garage 2A — immatriculation et carte grise" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Service Public &middot; Full-Stack</span>
+                        <h3>Garage 2A</h3>
+                        <p>Plateforme d'immatriculation avec simulateur de taxes 2026, tunnel de paiement Stripe et upload sécurisé.</p>
+                        <a href="projects/Garage2A/index.html" class="project-link">Voir la démo <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="creative" data-search="mariage wedding suite invitation rsvp livre or audio galerie photos">
+                    <div class="project-visual">
+                        <img src="assets/mariage.png" alt="Aperçu de Wedding Suite — écosystème digital pour mariage" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Event Tech</span>
+                        <h3>Wedding Suite</h3>
+                        <p>Écosystème interactif pour mariages : invitations, RSVP, livre d'or audio et galerie photos.</p>
+                        <a href="projects/Mariage/index.html" class="project-link">Visiter la suite <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="luxury creative" data-search="burger tacos food restauration rapide commande">
+                    <div class="project-visual">
+                        <img src="assets/BurgerTacos.png" alt="Aperçu du site Burger Tacos — restauration rapide urbaine" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Food Service</span>
+                        <h3>Burger Tacos</h3>
+                        <p>Interface de commande moderne pour restauration rapide urbaine.</p>
+                        <a href="projects/BurgerTacos/index.html" class="project-link">Voir le site <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="luxury creative" data-search="maddak restaurant gastronomique réservation google apps script">
+                    <div class="project-visual">
+                        <img src="assets/Maddak.jpg" alt="Aperçu du site Maddak — restaurant gastronomique fine dining" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Fine Dining &middot; Réservation</span>
+                        <h3>Maddak</h3>
+                        <p>Expérience gastronomique immersive avec système de réservation Google Apps Script.</p>
+                        <a href="projects/Maddak/index.html" class="project-link">Découvrir <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="tech" data-search="airalert pwa sport entraînement programme suivi">
+                    <div class="project-visual">
+                        <img src="assets/AirAlert.png" alt="Aperçu d'AirAlert PWA — programme de sport et suivi d'entraînement" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">PWA &middot; Sport</span>
+                        <h3>AirAlert PWA</h3>
+                        <p>Application progressive de suivi d'entraînement et monitoring de performance.</p>
+                        <a href="projects/AirAlert/index.html" class="project-link">Lancer <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="business" data-search="dental cabinet dentaire patientèle rendez-vous">
+                    <div class="project-visual">
+                        <img src="assets/CabinetDentaire.webp" alt="Aperçu du Cabinet Dentaire — interface de gestion de patientèle" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Pro Service</span>
+                        <h3>Cabinet Dentaire</h3>
+                        <p>Interface professionnelle pour la gestion de patientèle et prise de rendez-vous.</p>
+                        <a href="projects/dental-cabinet/index.html" class="project-link">Voir la démo <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="creative" data-search="elegant template agence créative prestations design web">
+                    <div class="project-visual">
+                        <img src="assets/TemplateSiteWeb.png" alt="Aperçu d'Elegant Template — design web minimaliste" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Web Design</span>
+                        <h3>Elegant Template</h3>
+                        <p>Template minimaliste et structuré pour agences créatives, avec page de prestations.</p>
+                        <a href="projects/elegant-template/index.html" class="project-link">Voir le template <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="tech creative" data-search="snake game wasm pyscript python webassembly jeu">
+                    <div class="project-visual">
+                        <img src="projects/_shared/visuals/snake-game.svg" alt="Aperçu du jeu Snake WASM en PyScript" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">WebAssembly &middot; PyScript</span>
+                        <h3>Snake WASM</h3>
+                        <p>Jeu de Snake haute performance porté en Python via WebAssembly (PyScript).</p>
+                        <a href="projects/snake_game/index.html" class="project-link">Jouer <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="tech business" data-search="task master todo list productivité tâches localStorage filtres">
+                    <div class="project-visual">
+                        <img src="projects/_shared/visuals/todo-list.svg" alt="Aperçu de Task Master — gestionnaire de tâches" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Productivity</span>
+                        <h3>Task Master</h3>
+                        <p>Gestionnaire de tâches intelligent avec stockage local persistant et filtres.</p>
+                        <a href="projects/todo-list/index.html" class="project-link">Tester <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="tech" data-search="calculator calculatrice scientifique glassmorphism design">
+                    <div class="project-visual">
+                        <img src="projects/_shared/visuals/calculator.svg" alt="Aperçu de la Glass Calculator — calculatrice glassmorphism" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">UI Design</span>
+                        <h3>Glass Calculator</h3>
+                        <p>Calculatrice scientifique au design glassmorphism, fluide et accessible.</p>
+                        <a href="projects/calculator/index.html" class="project-link">Utiliser <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="creative" data-search="shootevent photographe événementiel devis galerie">
+                    <div class="project-visual">
+                        <img src="assets/ShootEvent.png" alt="Aperçu de ShootEvent Pro — devis et galerie pour photographes événementiels" loading="lazy" decoding="async">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Sales Tool</span>
+                        <h3>ShootEvent Pro</h3>
+                        <p>Système de devis et galerie interactive pour photographes événementiels.</p>
+                        <a href="projects/ShootEvent-Template/index.html" class="project-link">Découvrir <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Empty state when filter+search yields nothing -->
+            <div class="projects-empty" id="projectsEmpty" hidden>
+                <i data-lucide="search-x" aria-hidden="true"></i>
+                <p>Aucun projet ne correspond à votre recherche.</p>
+                <button class="btn btn-secondary" id="resetFilters">Réinitialiser</button>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PARCOURS — Expériences + Formation
+             ============================================================ -->
+        <section id="parcours" class="section">
+            <div class="section-header">
+                <h2>Parcours<span>.</span></h2>
+                <p class="section-subtitle">Expériences professionnelles et cursus académique.</p>
+            </div>
+
+            <div class="parcours-grid">
+                <!-- Expériences -->
+                <div class="timeline-col">
+                    <h3 class="timeline-title">
+                        <i data-lucide="briefcase" aria-hidden="true"></i>
+                        Expériences
+                    </h3>
+                    <ol class="timeline">
+                        <li class="timeline-item timeline-item--current">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-card">
+                                <div class="timeline-meta">
+                                    <span class="timeline-period">Nov. 2025 — Aujourd'hui</span>
+                                    <span class="timeline-tag">Télécom &middot; Réglementaire</span>
+                                </div>
+                                <h4>Alternant Support Logiciel APSAL/GESALL</h4>
+                                <span class="timeline-org">Proximus Luxembourg</span>
+                                <ul class="timeline-bullets">
+                                    <li>Support technique : analyse, qualification et résolution d'incidents applicatifs</li>
+                                    <li>Suivi des anomalies, documentation et procédures (APSAL/GESALL)</li>
+                                    <li>Participation à l'amélioration continue et au développement logiciel (tests, retours, tickets)</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-card">
+                                <div class="timeline-meta">
+                                    <span class="timeline-period">Sept. 2024 — Déc. 2024</span>
+                                    <span class="timeline-tag">Hôtellerie</span>
+                                </div>
+                                <h4>Réception &amp; Support IT</h4>
+                                <span class="timeline-org">Best Western Plus Crystal Hotel</span>
+                                <ul class="timeline-bullets">
+                                    <li>Coordination du planning et accueil clientèle</li>
+                                    <li>Mise à jour de la base de données clients</li>
+                                    <li>Qualité de service et reporting</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-card">
+                                <div class="timeline-meta">
+                                    <span class="timeline-period">Juil. 2022 — Mars 2024</span>
+                                    <span class="timeline-tag">Logistique</span>
+                                </div>
+                                <h4>Operations Technician</h4>
+                                <span class="timeline-org">Amazon</span>
+                                <ul class="timeline-bullets">
+                                    <li>Gestion des flux et contrôle qualité</li>
+                                    <li>Respect des SLA et des règles de sécurité</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Formation -->
+                <div class="timeline-col">
+                    <h3 class="timeline-title">
+                        <i data-lucide="graduation-cap" aria-hidden="true"></i>
+                        Formation
+                    </h3>
+                    <ol class="timeline">
+                        <li class="timeline-item timeline-item--current">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-card">
+                                <div class="timeline-meta">
+                                    <span class="timeline-period">Sept. 2023 — Aujourd'hui</span>
+                                    <span class="timeline-tag">Université de Lorraine</span>
+                                </div>
+                                <h4>L1 / L2 / L3 — Parcours MIAGE</h4>
+                                <span class="timeline-org">IDMC Nancy</span>
+                                <p class="timeline-text">
+                                    Méthodes Informatiques Appliquées à la Gestion des Entreprises — analyse fonctionnelle,
+                                    bases de données, génie logiciel, gestion de projet.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-card">
+                                <div class="timeline-meta">
+                                    <span class="timeline-period">2020 — 2023</span>
+                                    <span class="timeline-tag">Université de Lorraine</span>
+                                </div>
+                                <h4>L1 — L2 Mathématiques &amp; Informatique</h4>
+                                <span class="timeline-org">Faculté des Sciences et Technologies, Nancy</span>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-card">
+                                <div class="timeline-meta">
+                                    <span class="timeline-period">2019 — 2020</span>
+                                    <span class="timeline-tag">Médecine</span>
+                                </div>
+                                <h4>PACES — Première Année Commune aux Études de Santé</h4>
+                                <span class="timeline-org">Faculté de Médecine de Nancy</span>
+                            </div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-card">
+                                <div class="timeline-meta">
+                                    <span class="timeline-period">2018 — 2019</span>
+                                    <span class="timeline-tag">Lycée</span>
+                                </div>
+                                <h4>Baccalauréat Scientifique — Spécialité Maths</h4>
+                                <span class="timeline-org">Lycée F. Truffaut, Bondoufle</span>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACT
+             ============================================================ -->
+        <section id="contact" class="section">
+            <div class="contact-section">
+                <div class="contact-decor" aria-hidden="true"></div>
+                <h2>Travaillons ensemble<span>.</span></h2>
+                <p>
+                    Vous cherchez un profil <strong>fonctionnel</strong> avec une vraie sensibilité <strong>technique</strong> ?
+                    Ou un développeur capable de comprendre les enjeux <strong>business</strong> ?
+                    Discutons-en.
+                </p>
+
+                <div class="contact-cards">
+                    <a href="mailto:soufiane.erd@gmail.com" class="contact-card">
+                        <i data-lucide="mail" aria-hidden="true"></i>
+                        <span class="contact-label">Email</span>
+                        <strong>soufiane.erd@gmail.com</strong>
+                    </a>
+                    <a href="tel:+33766168039" class="contact-card">
+                        <i data-lucide="phone" aria-hidden="true"></i>
+                        <span class="contact-label">Téléphone</span>
+                        <strong>+33 7 66 16 80 39</strong>
+                    </a>
+                    <div class="contact-card contact-card--static">
+                        <i data-lucide="map-pin" aria-hidden="true"></i>
+                        <span class="contact-label">Localisation</span>
+                        <strong>Nancy / Metz · Paris · Luxembourg</strong>
+                    </div>
+                    <a href="https://www.linkedin.com/in/soufiane-el-rhadi-217119293/" target="_blank" rel="noopener" class="contact-card">
+                        <i data-lucide="linkedin" aria-hidden="true"></i>
+                        <span class="contact-label">LinkedIn</span>
+                        <strong>/in/soufiane-el-rhadi</strong>
                     </a>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <div class="code-window glass">
-                    <div class="window-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <pre><code class="language-js">
-const profile = {
-    name: "Soufiane EL RHADI",
-    role: "Business Analyst / Data / Dev Web",
-    strengths: [
-        "Analyse fonctionnelle",
-        "Automatisation IA",
-        "Support applicatif",
-        "Gestion de projet SI"
-    ],
-    mindset: () => "Comprendre, structurer, améliorer"
-};
 
-profile.build();
-                    </code></pre>
+                <div class="contact-cta">
+                    <a href="mailto:soufiane.erd@gmail.com?subject=Projet%20%2F%20Alternance" class="btn btn-primary btn-lg">
+                        Démarrer la conversation <i data-lucide="arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="section-header">
-                <h2>À.Propos()</h2>
-                <div class="line"></div>
-            </div>
-            <div class="grid-2">
-                <div class="about-card glass">
-                    <div class="icon-wrapper"><i data-lucide="briefcase"></i></div>
-                    <h3>Expérience Pro</h3>
-                    <ul class="timeline">
-                        <li>
-                            <div class="date">Nov. 2025 - Aujourd’hui</div>
-                            <strong>Proximus Luxembourg</strong>
-                            <p>Alternant Support Logiciel APSAL/GESALL : analyse, qualification et résolution
-                                d’incidents applicatifs, suivi des anomalies, documentation, procédures, tests et
-                                amélioration continue.</p>
-                        </li>
-                        <li>
-                            <div class="date">Sept. 2024 - Déc. 2024</div>
-                            <strong>Best Western Plus Crystal Hotel</strong>
-                            <p>Réception / Support IT : coordination du planning, mise à jour de la base de données
-                                clients, qualité de service et reporting.</p>
-                        </li>
-                        <li>
-                            <div class="date">Juil. 2022 - Mars 2024</div>
-                            <strong>Amazon</strong>
-                            <p>Operations Technician : gestion des flux, contrôle qualité, respect des SLA et sécurité.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="about-card glass">
-                    <div class="icon-wrapper"><i data-lucide="graduation-cap"></i></div>
-                    <h3>Formation</h3>
-                    <ul class="timeline">
-                        <li>
-                            <div class="date">Sept. 2023 - Présent</div>
-                            <strong>Parcours MIAGE — IDMC Nancy</strong>
-                            <p>Systèmes d’information, analyse fonctionnelle, gestion de projet, data et développement.
-                            </p>
-                        </li>
-                        <li>
-                            <div class="date">2020 - 2023</div>
-                            <strong>L1/L2 Mathématiques & Informatique</strong>
-                            <p>Faculté des Sciences et Technologies de Nancy.</p>
-                        </li>
-                        <li>
-                            <div class="date">2019 - 2020</div>
-                            <strong>PACES — Médecine</strong>
-                            <p>Université de Nancy.</p>
-                        </li>
-                        <li>
-                            <div class="date">2018 - 2019</div>
-                            <strong>Bac Scientifique spécialité Maths</strong>
-                            <p>Lycée F. Truffaut, Bondoufle.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="section-header">
-                <h2>Compétences</h2>
-                <div class="line"></div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category glass">
-                    <h3><i data-lucide="briefcase-business"></i> Fonctionnel</h3>
-                    <div class="tags">
-                        <span class="tag">Recueil de besoins</span>
-                        <span class="tag">Ateliers / Personas</span>
-                        <span class="tag">User Stories</span>
-                        <span class="tag">Conduite du changement</span>
-                        <span class="tag">KPIs</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass">
-                    <h3><i data-lucide="kanban-square"></i> Gestion de projet</h3>
-                    <div class="tags">
-                        <span class="tag">Agile (Scrum)</span>
-                        <span class="tag">Kanban</span>
-                        <span class="tag">Jira</span>
-                        <span class="tag">Roadmap</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass">
-                    <h3><i data-lucide="server"></i> Technique</h3>
-                    <div class="tags">
-                        <span class="tag">API REST</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">HTML / CSS / JS</span>
-                        <span class="tag">Git / GitHub</span>
-                        <span class="tag">Pack Office / Excel</span>
-                        <span class="tag">Notions COBOL</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass">
-                    <h3><i data-lucide="languages"></i> Langues</h3>
-                    <div class="tags">
-                        <span class="tag">Français (natif)</span>
-                        <span class="tag">Anglais (B2)</span>
-                        <span class="tag">Arabe (B1)</span>
-                        <span class="tag">Chinois (A1)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="section-header">
-                <h2>Projets_Deployés</h2>
-                <div class="line"></div>
-            </div>
-            <div class="projects-grid">
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>La Perle Noire</h3>
-                        <p>Restaurant oriental luxueux avec animations et thème sombre.</p>
-                        <a href="projects/LaPerleNoire/index.html" class="link-btn">Visiter</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Sina Production</h3>
-                        <p>Portfolio élégant et chaud (Terracotta/Cuivre) pour photographe.</p>
-                        <a href="projects/SinaProduction/index.html" class="link-btn">Découvrir</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Atelier du Sourire</h3>
-                        <p>Site vitrine prestigieux pour un cabinet dentaire moderne.</p>
-                        <a href="projects/AtelierDuSourire/index.html" class="link-btn">Voir la démo</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Garage 2A</h3>
-                        <p>Plateforme carte grise en ligne : simulateur officiel + tunnel Stripe + Code de la route.</p>
-                        <a href="projects/Garage2A/index.html" class="link-btn">Voir la démo</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Kartell Dashboard</h3>
-                        <p>Solution de gestion de commandes et catalogue pour entreprise.</p>
-                        <a href="projects/Kartell/index.html" class="link-btn">Lancer l'App</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>AirTrack PWA</h3>
-                        <p>Application de suivi d'entraînement sportif (PWA).</p>
-                        <a href="projects/AirAlert/index.html" class="link-btn">Lancer</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Burger Tacos</h3>
-                        <p>Site vitrine premium pour restauration rapide urbaine.</p>
-                        <a href="projects/Restaurant/BurgerTacos/index.html" class="link-btn">Visiter</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Maddak Restaurant</h3>
-                        <p>Expérience gastronomique immersive en ligne.</p>
-                        <a href="projects/Restaurant/Maddak/index.html" class="link-btn">Découvrir</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Wedding Suite</h3>
-                        <p>Écosystème digital pour mariage : Invitation, Livre d'or Audio & Photo.</p>
-                        <a href="projects/Mariage/invitation/index.html" class="link-btn">Voir l'invitation</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Cabinet Dentaire</h3>
-                        <p>Site professionnel avec formulaires de prise de contact.</p>
-                        <a href="projects/dental-cabinet/index.html" class="link-btn">Visiter</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Task Master</h3>
-                        <p>Application de gestion de tâches avec stockage local.</p>
-                        <a href="projects/todo-list/index.html" class="link-btn">Tester</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Snake WASM</h3>
-                        <p>Jeu Snake classique porté en WebAssembly/Python.</p>
-                        <a href="projects/snake_game/index.html" class="link-btn">Jouer</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass group">
-                    <div class="card-body">
-                        <h3>Glass Calculator</h3>
-                        <p>Calculatrice au design minimaliste et glassmorphism.</p>
-                        <a href="projects/calculator/index.html" class="link-btn">Utiliser</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Templates Section -->
-        <section id="templates" class="section">
-            <div class="section-header">
-                <h2>Templates_Commerciaux</h2>
-                <div class="line"></div>
-            </div>
-
-            <div class="grid-2">
-                <div class="project-card glass">
-                    <div class="card-body">
-                        <h3>Elegant Template</h3>
-                        <p>Template minimaliste pour portfolio créatif.</p>
-                        <a href="templates/elegant-template/index.html" class="link-btn">Voir</a>
-                    </div>
-                </div>
-
-                <div class="project-card glass">
-                    <div class="card-body">
-                        <h3>ShootEvent Pro</h3>
-                        <p>Template devis + galerie pour photographes événementiels.</p>
-                        <a href="projects/ShootEvent-Template/index.html" class="link-btn">Voir</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="glass" style="padding: 4rem; text-align: center; border-radius: 24px;">
-                <h2 style="font-size: 2.5rem;">Prêt à collaborer ?</h2>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto;">
-                    Ouvert aux opportunités d’alternance à partir de septembre 2026,
-                    ainsi qu’aux collaborations sur des projets web, data et automatisation.
-                </p>
-                <a href="mailto:soufiane.erd@gmail.com" class="btn btn-primary btn-lg">
-                    Envoyer un email
-                </a>
             </div>
         </section>
     </main>
 
-    <footer class="glass" style="margin-top: 4rem; padding: 2rem; text-align: center;">
-        <p>&copy; 2026 Soufiane EL RHADI. Construit avec passion et code.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo logo--footer">S. EL RHADI<span>.</span></span>
+                <p class="footer-tag">Étudiant MIAGE — Business Analyst &amp; Développeur Full-Stack</p>
+            </div>
+            <div class="footer-links">
+                <a href="#profil">Profil</a>
+                <a href="#projects">Projets</a>
+                <a href="#parcours">Parcours</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="footer-meta">&copy; 2026 Soufiane EL RHADI &middot; Conçu &amp; développé à la main</p>
+        </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="script.js"></script>
+    <a href="#hero" class="back-to-top" aria-label="Retour en haut">
+        <i data-lucide="arrow-up" aria-hidden="true"></i>
+    </a>
+
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
