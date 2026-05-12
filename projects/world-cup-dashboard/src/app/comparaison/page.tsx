@@ -58,7 +58,7 @@ export default function ComparaisonPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div className="space-y-1">
           <h2 className="text-4xl font-black text-slate-900 tracking-tight">Analyse Comparative</h2>
-          <p className="text-slate-500 font-medium">Comparez l'évolution tactique et l'influence des clubs entre deux éditions.</p>
+          <p className="text-slate-500 font-medium">Comparez l&apos;évolution tactique et l&apos;influence des clubs entre deux éditions.</p>
         </div>
 
         <div className="bg-white p-2 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">

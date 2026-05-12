@@ -204,7 +204,7 @@ export default function HistoriquePage() {
                   <Info className="w-5 h-5 text-blue-400 mb-4" />
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Analyse du Score</p>
                   <p className="text-sm font-medium leading-relaxed">
-                    La finale de {selectedEdition.year} s'est soldée par un score de {selectedEdition.score}. 
+                    La finale de {selectedEdition.year} s&apos;est soldée par un score de {selectedEdition.score}. 
                     Cela illustre la tendance de {selectedEdition.year === 2022 ? "l'explosivité offensive" : "la rigueur tactique"} de cette période.
                   </p>
                 </div>

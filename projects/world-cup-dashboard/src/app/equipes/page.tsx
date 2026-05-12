@@ -116,7 +116,7 @@ export default function EquipesPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div className="space-y-1">
           <h2 className="text-4xl font-black text-slate-900 tracking-tight">Équipes & Effectifs</h2>
-          <p className="text-slate-500 font-medium">Découvrez les titulaires officiels et leurs clubs d'origine.</p>
+          <p className="text-slate-500 font-medium">Découvrez les titulaires officiels et leurs clubs d&apos;origine.</p>
         </div>
         
         <div className="flex gap-4">
@@ -157,7 +157,7 @@ export default function EquipesPage() {
           <Info className="w-4 h-4" />
         </div>
         <p className="text-sm text-slate-600">
-          <strong>Pourquoi cette page ?</strong> Cette vue vous permet de voir l'ossature d'une équipe. Vous pouvez trier par <strong>Club</strong> pour voir quelle équipe de club dominait la sélection.
+          <strong>Pourquoi cette page ?</strong> Cette vue vous permet de voir l&apos;ossature d&apos;une équipe. Vous pouvez trier par <strong>Club</strong> pour voir quelle équipe de club dominait la sélection.
         </p>
       </div>
 

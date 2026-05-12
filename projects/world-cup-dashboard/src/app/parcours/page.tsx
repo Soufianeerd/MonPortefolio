@@ -13,7 +13,30 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const knockoutData: any = {
+interface Scorer {
+  name: string;
+  min: number;
+}
+
+interface Match {
+  id: string;
+  teamA: string;
+  scoreA: number;
+  teamB: string;
+  scoreB: number;
+  scorers?: Scorer[];
+  penA?: number;
+  penB?: number;
+}
+
+interface KnockoutEdition {
+  round_16: Match[];
+  quarter: Match[];
+  semi: Match[];
+  final: Match[];
+}
+
+const knockoutData: Record<string, KnockoutEdition> = {
   "2022": {
     "round_16": [
       { id: "22-r16-1", teamA: "Pays-Bas", scoreA: 3, teamB: "USA", scoreB: 1, scorers: [{ name: "Depay", min: 10 }, { name: "Blind", min: 45 }, { name: "Dumfries", min: 81 }, { name: "Wright", min: 76 }] },
@@ -110,41 +133,41 @@ export default function ParcoursPage() {
           {/* R16 */}
           <div className="flex-1 space-y-12">
             <StageHeader title="8èmes" />
-            <div className="space-y-8">
-              {currentKnockout.round_16.map((m: any) => <MatchItem key={m.id} match={m} />)}
+              <div className="space-y-8">
+                {currentKnockout.round_16.map((m: Match) => <MatchItem key={m.id} match={m} />)}
+              </div>
             </div>
-          </div>
-
-          {/* Quarters */}
-          <div className="flex-1 space-y-12 pt-32">
-            <StageHeader title="Quarts" />
-            <div className="space-y-40">
-               {currentKnockout.quarter.map((m: any) => <MatchItem key={m.id} match={m} />)}
+  
+            {/* Quarters */}
+            <div className="flex-1 space-y-12 pt-32">
+              <StageHeader title="Quarts" />
+              <div className="space-y-40">
+                 {currentKnockout.quarter.map((m: Match) => <MatchItem key={m.id} match={m} />)}
+              </div>
             </div>
-          </div>
-
-          {/* Semis */}
-          <div className="flex-1 space-y-12 pt-64">
-            <StageHeader title="Demis" />
-            <div className="space-y-[320px]">
-               {currentKnockout.semi.map((m: any) => <MatchItem key={m.id} match={m} />)}
+  
+            {/* Semis */}
+            <div className="flex-1 space-y-12 pt-64">
+              <StageHeader title="Demis" />
+              <div className="space-y-[320px]">
+                 {currentKnockout.semi.map((m: Match) => <MatchItem key={m.id} match={m} />)}
+              </div>
             </div>
-          </div>
-
-          {/* Final */}
-          <div className="flex-1 space-y-12 pt-[400px]">
-            <StageHeader title="Finale" highlight />
-            <div className="scale-150 origin-top">
-               {currentKnockout.final.map((m: any) => <MatchItem key={m.id} match={m} highlight />)}
+  
+            {/* Final */}
+            <div className="flex-1 space-y-12 pt-[400px]">
+              <StageHeader title="Finale" highlight />
+              <div className="scale-150 origin-top">
+                 {currentKnockout.final.map((m: Match) => <MatchItem key={m.id} match={m} highlight />)}
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
   );
 }
 
-function StageHeader({ title, highlight }: any) {
+function StageHeader({ title, highlight }: { title: string; highlight?: boolean }) {
   return (
     <div className="flex items-center gap-4">
       <div className={cn("h-1.5 w-10 rounded-full", highlight ? "bg-wc-red" : "bg-slate-900")} />
@@ -153,7 +176,7 @@ function StageHeader({ title, highlight }: any) {
   );
 }
 
-function MatchItem({ match, highlight }: any) {
+function MatchItem({ match, highlight }: { match: Match; highlight?: boolean }) {
   const { teamA, scoreA, teamB, scoreB, scorers, penA, penB } = match;
 
   return (
@@ -204,13 +227,13 @@ function MatchItem({ match, highlight }: any) {
                 <Clock className="w-4 h-4 text-wc-red" /> Chronologie des Buts
               </h5>
               <div className="space-y-4">
-                 {scorers && scorers.map((s: any, i: number) => (
+                 {scorers && scorers.map((s: Scorer, i: number) => (
                    <div key={i} className="flex justify-between items-center text-sm font-black text-slate-700 p-4 rounded-2xl bg-slate-50 border border-slate-50 hover:border-slate-200 transition-all">
                      <div className="flex items-center gap-3">
                        <div className="w-1.5 h-1.5 rounded-full bg-wc-green" />
                        <span>{s.name}</span>
                      </div>
-                     <span className="text-wc-red italic">{s.min}'</span>
+                     <span className="text-wc-red italic">{s.min}&apos;</span>
                    </div>
                  ))}
                  {(!scorers || scorers.length === 0) && <p className="text-sm text-slate-400 italic text-center py-6">Pas de buts dans le temps réglementaire.</p>}
