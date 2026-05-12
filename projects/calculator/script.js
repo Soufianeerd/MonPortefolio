@@ -1,184 +1,115 @@
-// Calculator Logic
-let currentOperand = '0';
-let previousOperand = '';
-let operation = undefined;
-let history = [];
+// Glass Calculator Advanced Logic
 
-const currentOperandTextElement = document.getElementById('current-operand');
-const previousOperandTextElement = document.getElementById('previous-operand');
-const historyListElement = document.getElementById('history-list');
+let currentInput = "0";
+let previousInput = "";
+let isEvaluated = false;
+let memory = 0;
+
+const currentDisplay = document.getElementById('current-display');
+const previousDisplay = document.getElementById('previous-display');
 
 function updateDisplay() {
-    currentOperandTextElement.innerText = currentOperand;
-    if (operation != null) {
-        previousOperandTextElement.innerText = `${previousOperand} ${operation}`;
+    // Format large numbers
+    let displayValue = currentInput;
+    if (displayValue.length > 12) {
+        displayValue = parseFloat(displayValue).toPrecision(8);
+    }
+    currentDisplay.innerText = displayValue;
+    previousDisplay.innerText = previousInput;
+}
+
+function append(char) {
+    if (isEvaluated) {
+        currentInput = char;
+        isEvaluated = false;
     } else {
-        previousOperandTextElement.innerText = '';
+        if (currentInput === "0" && char !== ".") {
+            currentInput = char;
+        } else {
+            currentInput += char;
+        }
     }
+    updateDisplay();
 }
 
-function appendNumber(number) {
-    if (number === '.' && currentOperand.includes('.')) return;
-    if (currentOperand === '0' && number !== '.') {
-        currentOperand = number.toString();
+function op(operator) {
+    if (isEvaluated) isEvaluated = false;
+    // Prevent multiple operators
+    const lastChar = currentInput.trim().slice(-1);
+    if (['+', '-', '*', '/'].includes(lastChar)) {
+        currentInput = currentInput.trim().slice(0, -1) + " " + operator + " ";
     } else {
-        currentOperand = currentOperand.toString() + number.toString();
+        currentInput += " " + operator + " ";
     }
     updateDisplay();
 }
 
-function chooseOperation(op) {
-    if (currentOperand === '') return;
-    if (previousOperand !== '') {
-        compute();
-    }
-    operation = op;
-    previousOperand = currentOperand;
-    currentOperand = '';
+function clearAll() {
+    currentInput = "0";
+    previousInput = "";
+    isEvaluated = false;
     updateDisplay();
 }
 
-function compute() {
-    let computation;
-    const prev = parseFloat(previousOperand);
-    const current = parseFloat(currentOperand);
-    if (isNaN(prev) || isNaN(current)) return;
+function calculate() {
+    try {
+        let expression = currentInput
+            .replace(/×/g, '*')
+            .replace(/÷/g, '/')
+            .replace(/−/g, '-');
+        
+        // Remove trailing operators
+        expression = expression.trim();
+        if (['+', '-', '*', '/'].includes(expression.slice(-1))) {
+            expression = expression.slice(0, -1);
+        }
 
-    switch (operation) {
-        case '+':
-            computation = prev + current;
-            break;
-        case '-':
-            computation = prev - current;
-            break;
-        case '×':
-            computation = prev * current;
-            break;
-        case '÷':
-            if (current === 0) {
-                alert("Cannot divide by zero!");
-                return;
-            }
-            computation = prev / current;
-            break;
-        default:
-            return;
+        previousInput = currentInput + " =";
+        
+        // Use a safer evaluation method
+        const result = Function('"use strict";return (' + expression + ')')();
+        currentInput = result.toString();
+        isEvaluated = true;
+    } catch (e) {
+        currentInput = "Error";
     }
-
-    // Add to history before resetting
-    addToHistory(`${prev} ${operation} ${current}`, computation);
-
-    currentOperand = computation;
-    operation = undefined;
-    previousOperand = '';
     updateDisplay();
 }
 
-function scientific(func) {
-    const current = parseFloat(currentOperand);
-    if (isNaN(current)) return;
+function func(f) {
+    let val = parseFloat(currentInput);
+    if (isNaN(val)) return;
 
-    let result;
-    let desc;
+    if (f === 'sqrt') val = Math.sqrt(val);
+    else if (f === 'sin') val = Math.sin(val * Math.PI / 180);
+    else if (f === 'cos') val = Math.cos(val * Math.PI / 180);
+    else if (f === 'tan') val = Math.tan(val * Math.PI / 180);
+    else if (f === 'log') val = Math.log10(val);
+    else if (f === 'ln') val = Math.log(val);
+    else if (f === 'pow2') val = Math.pow(val, 2);
+    else if (f === 'plusminus') val = val * -1;
+    else if (f === 'exp') val = Math.exp(val);
 
-    switch (func) {
-        case 'sin':
-            result = Math.sin(current);
-            desc = `sin(${current})`;
-            break;
-        case 'cos':
-            result = Math.cos(current);
-            desc = `cos(${current})`;
-            break;
-        case 'tan':
-            result = Math.tan(current);
-            desc = `tan(${current})`;
-            break;
-        case 'log':
-            result = Math.log10(current);
-            desc = `log(${current})`;
-            break;
-        case 'sqrt':
-            if (current < 0) { alert("Invalid Input"); return; }
-            result = Math.sqrt(current);
-            desc = `√(${current})`;
-            break;
-        case 'pow2':
-            result = Math.pow(current, 2);
-            desc = `sqr(${current})`;
-            break;
-        case 'pi':
-            result = Math.PI;
-            desc = 'π';
-            break;
-        case 'e':
-            result = Math.E;
-            desc = 'e';
-            break;
-        default:
-            return;
-    }
-
-    if (func !== 'pi' && func !== 'e') {
-        addToHistory(desc, result);
-    }
-
-    currentOperand = result;
+    currentInput = val.toString();
+    isEvaluated = true;
     updateDisplay();
 }
 
-function clearDisplay() {
-    currentOperand = '0';
-    previousOperand = '';
-    operation = undefined;
+function consts(c) {
+    if (c === 'pi') currentInput = Math.PI.toString();
+    isEvaluated = true;
     updateDisplay();
 }
 
-function deleteNumber() {
-    currentOperand = currentOperand.toString().slice(0, -1);
-    if (currentOperand === '') currentOperand = '0';
+function mem(m) {
+    const val = parseFloat(currentInput);
+    if (m === 'MC') memory = 0;
+    else if (m === 'MR') { currentInput = memory.toString(); isEvaluated = true; }
+    else if (m === 'M+') memory += val;
+    else if (m === 'M-') memory -= val;
+    else if (m === 'MS') memory = val;
     updateDisplay();
 }
 
-// History Functions
-function addToHistory(expression, result) {
-    history.unshift({ expression, result }); // Add to top
-    if (history.length > 20) history.pop(); // Limit to 20
-    renderHistory();
-}
-
-function renderHistory() {
-    historyListElement.innerHTML = '';
-    if (history.length === 0) {
-        historyListElement.innerHTML = '<div class="empty-history">No history yet</div>';
-        return;
-    }
-
-    history.forEach((item) => {
-        const div = document.createElement('div');
-        div.className = 'history-item';
-        div.innerHTML = `
-            <div class="history-op">${item.expression} =</div>
-            <div class="history-res">${formatNumber(item.result)}</div>
-        `;
-        div.onclick = () => {
-            currentOperand = item.result.toString();
-            updateDisplay();
-        };
-        historyListElement.appendChild(div);
-    });
-}
-
-function clearHistory() {
-    history = [];
-    renderHistory();
-}
-
-function formatNumber(num) {
-    const n = parseFloat(num);
-    if (Number.isInteger(n)) return n;
-    return parseFloat(n.toFixed(6)); // Limit decimals in history
-}
-
-// Initialize
+// Initial state
 updateDisplay();

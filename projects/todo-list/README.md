@@ -1,185 +1,88 @@
-# ✅ Todo List — Application de Tâches avec Persistance Locale
+# 🚀 Task Master — Gestionnaire de tâches intelligent & Premium
 
-> Application de gestion de tâches minimaliste et élégante, avec persistance via `localStorage`, filtrage et comptage dynamique des tâches restantes.
+> Une interface de productivité haute performance inspirée des standards "Quiet Luxury", avec une gestion avancée des priorités, du filtrage temporel et une persistance locale robuste.
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![localStorage](https://img.shields.io/badge/localStorage-Persistence-orange?style=flat)
-
----
-
-## 📋 Table des matières
-
-1. [Description](#description)
-2. [Stack technique](#stack-technique)
-3. [Architecture](#architecture)
-4. [Fonctionnalités](#fonctionnalités)
-5. [Installation](#installation)
-6. [Utilisation](#utilisation)
-7. [Logique métier](#logique-métier)
-8. [Roadmap](#roadmap)
-9. [Auteur](#auteur)
+![Task Master UI](../../assets/TaskMaster.png)
 
 ---
 
 ## 📖 Description
 
-### Problématique
-Les applications de to-do list sont souvent trop complexes ou perdent les données à chaque rechargement de page. Ce projet répond au besoin d'un outil simple, persistant et instantanément opérationnel.
+**Task Master** n'est pas une simple "to-do list". C'est un tableau de bord de productivité conçu pour offrir une expérience utilisateur fluide et sans friction. L'application met l'accent sur la hiérarchisation des tâches et la clarté visuelle.
 
-### Objectif
-Implémenter les fondamentaux du développement frontend moderne : **manipulation du DOM**, **état applicatif**, **persistance `localStorage`**, et **rendu dynamique**.
-
-### Public cible
-- Recruteurs évaluant les bases JavaScript
-- Utilisateurs cherchant un outil de productivité léger
+### Objectifs atteints
+- **UI/UX Premium** : Design neumorphique léger, typographie Inter, et mise en page structurée.
+- **Gestion Métier** : Système de priorités (Élevée, Moyenne, Basse) et organisation temporelle (Aujourd'hui, À venir).
+- **Zéro Dépendance** : Développé en HTML5, CSS3 et JavaScript Vanilla.
 
 ---
 
-## 🛠️ Stack technique
+## ✨ Fonctionnalités Clés
 
-| Catégorie | Technologie |
+- 📊 **Tableau de Bord Holistique** : Vue d'ensemble des tâches par catégories (Aujourd'hui, Priorités, Terminées).
+- 🚩 **Gestion des Priorités** : Indicateurs colorés pour identifier instantanément les urgences.
+- 🗓️ **Planification Temporelle** : Séparation intelligente entre les tâches du jour et les échéances futures.
+- 💾 **Persistance Locale** : Sauvegarde automatique de l'état applicatif via `localStorage`.
+- 📱 **Responsive Design** : Interface optimisée pour desktop et mobile avec sidebar escamotable.
+
+---
+
+## 🛠️ Stack Technique
+
+| Composant | Technologie |
 |-----------|-------------|
-| Structure | HTML5 sémantique |
-| Style | CSS3 Vanilla |
-| Logique | JavaScript ES6+ (Vanilla) |
-| Persistance | `localStorage` API (navigateur) |
-| Icônes | Font Awesome 6 (check, trash) |
-| Dépendances | **Aucune** — 0 framework |
+| **Structure** | HTML5 Sémantique |
+| **Style** | CSS3 (Variables, Flexbox, Backdrop-filters) |
+| **Logique** | JavaScript ES6+ (State management, DOM Rendering) |
+| **Persistance** | LocalStorage API |
+| **Icônes** | Font Awesome 6 |
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture Technique
 
 ```
 todo-list/
-├── index.html    # Structure HTML + layout
-├── style.css     # Design, animations, états visuels
-├── script.js     # Logique d'état + CRUD + localStorage
-└── README.md
+├── index.html    # Layout complexe avec Sidebar & Main Content
+├── style.css     # Design System (Tokens, Neumorphism, Animations)
+├── script.js     # Logique d'état, filtrage dynamique & persistance
+└── README.md     # Documentation
 ```
 
-### Gestion de l'état
-
+### Modèle de Données
 ```javascript
-// State = tableau de todos persisté en localStorage
-let todos = JSON.parse(localStorage.getItem('todos')) || [];
-
-// Structure d'un todo
 {
-  id:        Date.now(),   // Identifiant unique (timestamp)
-  text:      "Ma tâche",  // Contenu
-  completed: false         // État
+  id: 1678569706902,
+  text: "Finaliser le rapport annuel",
+  priority: "high",    // high, medium, low, none
+  date: "today",       // today, tomorrow, friday, later
+  completed: false
 }
 ```
 
 ---
 
-## ✨ Fonctionnalités
+## ⚙️ Logique de Filtrage
 
-### Fonctionnalités principales
-
-- ➕ **Ajout de tâche** — input + bouton Add ou touche Entrée
-- ✅ **Marquer complète** — clic sur bouton check → strikethrough visuel
-- 🗑️ **Suppression** — icône poubelle par tâche
-- 🧹 **Clear Completed** — supprime toutes les tâches terminées en un clic
-- 💾 **Persistance** — données sauvegardées entre sessions (localStorage)
-- 📅 **Date dynamique** — affiche le jour et la date actuels
-
-### Fonctionnalités secondaires
-
-- Compteur "X items left" mis à jour en temps réel
-- État visuel distinct pour tâches complètes (opacité + barré)
-- Empêche l'ajout de tâches vides
-- Date localisée en anglais (`en-US`)
-
----
-
-## 🚀 Installation
-
-```bash
-# Ouvrir directement
-open projects/todo-list/index.html
-
-# Serveur local
-npx serve projects/todo-list/
-```
-
-Aucune configuration nécessaire.
-
----
-
-## 💡 Utilisation
-
-```
-1. Taper une tâche dans le champ de saisie
-2. Appuyer sur le bouton Add ou la touche Entrée
-3. Cocher une tâche pour la marquer comme complète
-4. Supprimer une tâche avec l'icône poubelle
-5. "Clear Completed" pour vider les tâches terminées
-6. Les tâches persistent au rechargement de la page
-```
-
----
-
-## ⚙️ Logique métier
-
-### CRUD complet
+L'application utilise un moteur de filtrage dynamique basé sur l'état des tâches :
 
 ```javascript
-// Créer
-function addTodo()       { todos.push(newTodo); save(); render(); }
-
-// Lire
-function renderTodos()   { todos.forEach(todo => buildDOMItem(todo)); }
-
-// Mettre à jour
-function toggleComplete(id) { todos.map(t => t.id === id ? {...t, completed: !t.completed} : t) }
-
-// Supprimer
-function deleteTodo(id)  { todos = todos.filter(t => t.id !== id); }
+function renderTasks(filter = 'all') {
+    let filteredTasks = tasks;
+    if (filter === 'today') filteredTasks = tasks.filter(t => t.date === 'today');
+    if (filter === 'priorities') filteredTasks = tasks.filter(t => t.priority !== 'none');
+    if (filter === 'completed') filteredTasks = tasks.filter(t => t.completed);
+    // ... rendu dynamique
+}
 ```
-
-### Persistance localStorage
-
-```javascript
-// Sauvegarde
-localStorage.setItem('todos', JSON.stringify(todos));
-
-// Lecture au chargement
-let todos = JSON.parse(localStorage.getItem('todos')) || [];
-```
-
-### Génération dynamique du DOM
-
-Chaque todo est construit programmatiquement :
-
-```javascript
-const todoItem     = document.createElement('li');
-const checkBtn     = document.createElement('button');  // FontAwesome fa-check
-const todoText     = document.createElement('span');
-const trashBtn     = document.createElement('button');  // FontAwesome fa-trash
-```
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Drag & drop pour réorganiser les tâches
-- [ ] Filtres : Tous / Actifs / Complétés
-- [ ] Catégories / tags par tâche
-- [ ] Date limite (due date) par tâche
-- [ ] Synchronisation cloud (Firebase)
-- [ ] Notifications (due date reminder)
 
 ---
 
 ## 👤 Auteur
 
 **Soufiane EL RHADI**
-Développeur Web — étudiant en Master MIAGE
+Développeur Web Full-Stack
 
-> Projet démontrant la maîtrise du cycle complet CRUD en JavaScript Vanilla (Create, Read, Update, Delete), de la persistance locale et du rendu dynamique du DOM sans aucune dépendance externe.
+> Projet réalisé pour démontrer la capacité à transformer un concept visuel haute fidélité (Mockup) en une application web interactive et fonctionnelle, tout en respectant une logique métier rigoureuse.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Voir%20en%20ligne-blue?style=flat)](../../index.html)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Retour%20au%20portefolio-black?style=for-the-badge)](../../index.html)

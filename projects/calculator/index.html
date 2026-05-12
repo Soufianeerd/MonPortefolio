@@ -1,77 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glass Calculator</title>
+    <title>Glass Calculator | UI Design</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <div class="container app-container">
-        <div class="calculator">
-            <div class="display">
-                <div class="previous-operand" id="previous-operand"></div>
-                <div class="current-operand" id="current-operand">0</div>
+
+    <div class="calculator-container">
+        <!-- Top Bar -->
+        <header class="calc-header">
+            <i class="fas fa-bars"></i>
+            <div class="mode-switch">
+                <span class="mode-item active">• Deg</span>
+                <span class="mode-item">Rad</span>
             </div>
-            <div class="buttons">
-                <!-- Scientific Row 1 -->
-                <button class="btn scientific" onclick="scientific('sin')">sin</button>
-                <button class="btn scientific" onclick="scientific('cos')">cos</button>
-                <button class="btn scientific" onclick="scientific('tan')">tan</button>
-                <button class="btn scientific" onclick="scientific('log')">log</button>
+            <i class="far fa-moon"></i>
+        </header>
 
-                <!-- Scientific Row 2 -->
-                <button class="btn scientific" onclick="scientific('sqrt')">√</button>
-                <button class="btn scientific" onclick="scientific('pow2')">x²</button>
-                <button class="btn scientific" onclick="scientific('pi')">π</button>
-                <button class="btn scientific" onclick="scientific('e')">e</button>
-
-                <!-- Standard Grid -->
-                <button class="btn ac span-two" onclick="clearDisplay()">AC</button>
-                <button class="btn" onclick="deleteNumber()">DEL</button>
-                <button class="btn operator" onclick="chooseOperation('÷')">÷</button>
-
-                <button class="btn" onclick="appendNumber('7')">7</button>
-                <button class="btn" onclick="appendNumber('8')">8</button>
-                <button class="btn" onclick="appendNumber('9')">9</button>
-                <button class="btn operator" onclick="chooseOperation('×')">×</button>
-
-                <button class="btn" onclick="appendNumber('4')">4</button>
-                <button class="btn" onclick="appendNumber('5')">5</button>
-                <button class="btn" onclick="appendNumber('6')">6</button>
-                <button class="btn operator" onclick="chooseOperation('-')">-</button>
-
-                <button class="btn" onclick="appendNumber('1')">1</button>
-                <button class="btn" onclick="appendNumber('2')">2</button>
-                <button class="btn" onclick="appendNumber('3')">3</button>
-                <button class="btn operator" onclick="chooseOperation('+')">+</button>
-
-                <button class="btn" onclick="appendNumber('.')">.</button>
-                <button class="btn" onclick="appendNumber('0')">0</button>
-                <button class="btn equals span-two" onclick="compute()">=</button>
-            </div>
+        <!-- Display Area -->
+        <div class="display">
+            <div class="previous-op" id="previous-display">sin(30) × √2 + log₁₀(100)</div>
+            <div class="current-op" id="current-display">1.70710678</div>
         </div>
 
-        <div class="history-panel">
-            <h3>History</h3>
-            <div id="history-list" class="history-list">
-                <!-- History items will appear here -->
-                <div class="empty-history">No history yet</div>
+        <!-- Buttons Section -->
+        <div class="buttons-section">
+            <!-- Scientific Grid (6 columns) -->
+            <div class="scientific-grid">
+                <button class="btn" onclick="mem('MC')">MC</button>
+                <button class="btn" onclick="mem('MR')">MR</button>
+                <button class="btn" onclick="mem('M+')">M+</button>
+                <button class="btn" onclick="mem('M-')">M-</button>
+                <button class="btn" onclick="mem('MS')">MS</button>
+                <button class="btn ac" onclick="clearAll()">AC</button>
+                
+                <button class="btn" onclick="func('sin')">sin</button>
+                <button class="btn" onclick="func('cos')">cos</button>
+                <button class="btn" onclick="func('tan')">tan</button>
+                <button class="btn" onclick="func('ln')">ln</button>
+                <button class="btn" onclick="func('log')">log</button>
+                <button class="btn" onclick="op('%')">%</button>
+                
+                <button class="btn" onclick="func('sqrt')">√</button>
+                <button class="btn" onclick="func('pow2')">x²</button>
+                <button class="btn" onclick="func('powy')">xʸ</button>
+                <button class="btn" onclick="consts('pi')">π</button>
+                <button class="btn" onclick="append('(')">(</button>
+                <button class="btn" onclick="append(')')">)</button>
             </div>
-            <button class="btn-clear-history" onclick="clearHistory()">Clear History</button>
-        </div>
 
+            <!-- Main Grid (5 columns) -->
+            <div class="main-grid">
+                <button class="btn btn-num" onclick="append('7')">7</button>
+                <button class="btn btn-num" onclick="append('8')">8</button>
+                <button class="btn btn-num" onclick="append('9')">9</button>
+                <button class="btn btn-op" onclick="op('/')">÷</button>
+                <button class="btn btn-op" onclick="op('*')">×</button>
+                
+                <button class="btn btn-num" onclick="append('4')">4</button>
+                <button class="btn btn-num" onclick="append('5')">5</button>
+                <button class="btn btn-num" onclick="append('6')">6</button>
+                <button class="btn btn-op" onclick="op('-')">−</button>
+                <button class="btn btn-op" onclick="op('+')">+</button>
+                
+                <button class="btn btn-num" onclick="append('1')">1</button>
+                <button class="btn btn-num" onclick="append('2')">2</button>
+                <button class="btn btn-num" onclick="append('3')">3</button>
+                <button class="btn btn-op" onclick="func('plusminus')">+/-</button>
+                <button class="btn btn-equals" onclick="calculate()">=</button>
+                
+                <button class="btn btn-num" style="grid-column: span 2;" onclick="append('0')">0</button>
+                <button class="btn btn-num" onclick="append('.')">.</button>
+                <button class="btn btn-num" style="font-size: 11px;" onclick="func('exp')">EXP</button>
+            </div>
+        </div>
     </div>
-    <footer>
-        <a href="../../index.html"
-            style="color: rgba(255,255,255,0.6); text-decoration: none; font-family: 'Poppins', sans-serif;">&larr; Back
-            to Portfolio</a>
-    </footer>
-    <script src="script.js"></script>
-    <script src="../_shared/portfolio-bar.js" defer></script>
-</body>
 
+    <footer>
+        <a href="../../index.html" class="back-link">&larr; Retour au Portfolio</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

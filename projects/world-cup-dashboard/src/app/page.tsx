@@ -11,14 +11,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="space-y-8 text-center px-6">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-[10px] font-black text-slate-500 uppercase tracking-[3px]">
-          <PlayCircle className="w-3.5 h-3.5" /> Guide d'Exploration
+          <PlayCircle className="w-3.5 h-3.5" /> Guide d&apos;Exploration
         </div>
         <h1 className="text-8xl font-black text-slate-900 tracking-tighter leading-[0.9]">
           FIFA <br />
           <span className="text-slate-300">ARCHIVES.</span>
         </h1>
         <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-          Une plateforme épurée dédiée à l'analyse des grandes épopées de la Coupe du Monde. Comprenez chaque édition à travers ses parcours, ses effectifs et ses statistiques.
+          Une plateforme épurée dédiée à l&apos;analyse des grandes épopées de la Coupe du Monde. Comprenez chaque édition à travers ses parcours, ses effectifs et ses statistiques.
         </p>
       </section>
 
@@ -117,6 +117,6 @@ export default function Home() {
   );
 }
 
-function cn(...inputs: any[]) {
+function cn(...inputs: (string | boolean | undefined | null | number)[]) {
   return inputs.filter(Boolean).join(" ");
 }
