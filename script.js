@@ -345,5 +345,27 @@
         // Expose to window for easy testing
         // Example: window.setPortfolioTime(21)
         window.setPortfolioTime = (h) => updateBackground(h);
+
+        // Debug function to cycle through all backgrounds
+        window.testAllPortfolioBackgrounds = function () {
+            const hours = [8, 12, 15, 19, 21, 1];
+            let index = 0;
+
+            function testNext() {
+                window.setPortfolioTime(hours[index]);
+                console.log(`[Test] Showing background for hour: ${hours[index]}h`);
+                index++;
+
+                if (index < hours.length) {
+                    setTimeout(testNext, 2500); // 2.5s between each background
+                } else {
+                    console.log("[Test] Cycle complete.");
+                    // Return to current time after test
+                    setTimeout(() => updateBackground(), 2500);
+                }
+            }
+
+            testNext();
+        };
     }
 })();

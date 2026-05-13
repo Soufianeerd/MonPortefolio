@@ -271,10 +271,36 @@ section {
 [data-time="night"] .hero-dynamic-bg::after {
     background: linear-gradient(
         to bottom,
-        rgba(10, 25, 49, 0.6) 0%,
-        rgba(10, 25, 49, 0.3) 50%,
-        rgba(10, 25, 49, 0.8) 100%
+        rgba(10, 25, 49, 0.7) 0%,
+        rgba(10, 25, 49, 0.4) 50%,
+        rgba(10, 25, 49, 0.85) 100%
     );
+}
+
+/* Specific Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero-dynamic-bg::before {
+        background-position: 70% center; /* Focus more on the subject/architecture on mobile */
+    }
+    
+    .hero-dynamic-bg::after {
+        background: linear-gradient(
+            to bottom,
+            rgba(246, 250, 253, 0.9) 0%,
+            rgba(246, 250, 253, 0.6) 50%,
+            rgba(246, 250, 253, 0.95) 100%
+        );
+    }
+    
+    [data-time="evening"] .hero-dynamic-bg::after,
+    [data-time="night"] .hero-dynamic-bg::after {
+        background: linear-gradient(
+            to bottom,
+            rgba(10, 25, 49, 0.85) 0%,
+            rgba(10, 25, 49, 0.6) 50%,
+            rgba(10, 25, 49, 0.95) 100%
+        );
+    }
 }
 
 [data-time="evening"] .hero-title,
