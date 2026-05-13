@@ -30,6 +30,7 @@
     --max-width: 1400px;
     --gutter: 4rem;
     --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --site-bg: url("assets/backgrounds/dynamic/day-01-morning.webp");
 }
 
 *, *::before, *::after {
@@ -50,6 +51,37 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
+    /* Site-wide dynamic background */
+    min-height: 100vh;
+    background-image: 
+        linear-gradient(
+            rgba(246, 250, 253, 0.25), 
+            rgba(246, 250, 253, 0.45)
+        ),
+        var(--site-bg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: background-image 1.2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+}
+
+/* Evening/Night overrides for body background */
+[data-time="evening"], [data-time="night"] {
+    background-image: 
+        linear-gradient(
+            rgba(10, 25, 49, 0.45), 
+            rgba(10, 25, 49, 0.65)
+        ),
+        var(--site-bg);
 }
 
 img { max-width: 100%; display: block; }
@@ -235,72 +267,12 @@ section {
     padding-top: 8rem;
     padding-bottom: 4rem;
     position: relative;
-    overflow: hidden; /* Ensure background doesn't bleed */
 }
 
-/* Dynamic Background Support */
-.hero-dynamic-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: var(--hero-bg, none);
-    transition: background-image 1.2s ease-in-out, opacity 1.2s ease-in-out;
-}
-
-/* Light overlay to maintain text readability */
+/* We don't need the hero-specific dynamic bg anymore since it's on body */
+.hero-dynamic-bg::before,
 .hero-dynamic-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(
-        to bottom,
-        rgba(246, 250, 253, 0.8) 0%,
-        rgba(246, 250, 253, 0.4) 50%,
-        rgba(246, 250, 253, 0.9) 100%
-    );
-    pointer-events: none;
-}
-
-/* Dark mode adjustment for night/evening if needed */
-[data-time="evening"] .hero-dynamic-bg::after,
-[data-time="night"] .hero-dynamic-bg::after {
-    background: linear-gradient(
-        to bottom,
-        rgba(10, 25, 49, 0.7) 0%,
-        rgba(10, 25, 49, 0.4) 50%,
-        rgba(10, 25, 49, 0.85) 100%
-    );
-}
-
-/* Specific Mobile Adjustments */
-@media (max-width: 768px) {
-    .hero-dynamic-bg::before {
-        background-position: 70% center; /* Focus more on the subject/architecture on mobile */
-    }
-    
-    .hero-dynamic-bg::after {
-        background: linear-gradient(
-            to bottom,
-            rgba(246, 250, 253, 0.9) 0%,
-            rgba(246, 250, 253, 0.6) 50%,
-            rgba(246, 250, 253, 0.95) 100%
-        );
-    }
-    
-    [data-time="evening"] .hero-dynamic-bg::after,
-    [data-time="night"] .hero-dynamic-bg::after {
-        background: linear-gradient(
-            to bottom,
-            rgba(10, 25, 49, 0.85) 0%,
-            rgba(10, 25, 49, 0.6) 50%,
-            rgba(10, 25, 49, 0.95) 100%
-        );
-    }
+    display: none;
 }
 
 [data-time="evening"] .hero-title,
@@ -530,11 +502,19 @@ section {
 }
 
 .profil-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: var(--radius-lg);
     padding: 2.5rem;
     transition: var(--transition);
+}
+[data-time="evening"] .profil-card, 
+[data-time="night"] .profil-card {
+    background: rgba(10, 25, 49, 0.68);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.16);
 }
 .profil-card:hover {
     border-color: var(--text-black);
@@ -662,11 +642,19 @@ section {
 }
 
 .comp-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: var(--radius-lg);
     padding: 2.25rem;
     transition: var(--transition);
+}
+[data-time="evening"] .comp-card, 
+[data-time="night"] .comp-card {
+    background: rgba(10, 25, 49, 0.68);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.16);
 }
 .comp-card:hover {
     transform: translateY(-4px);
@@ -834,8 +822,10 @@ section {
 }
 
 .project-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: var(--transition);
@@ -844,6 +834,12 @@ section {
     text-decoration: none;
     color: inherit;
     position: relative;
+}
+[data-time="evening"] .project-card, 
+[data-time="night"] .project-card {
+    background: rgba(10, 25, 49, 0.68);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.16);
 }
 
 .project-card::before {
@@ -1060,11 +1056,19 @@ section {
 }
 
 .timeline-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: var(--radius-md);
     padding: 1.5rem;
     transition: var(--transition);
+}
+[data-time="evening"] .timeline-card, 
+[data-time="night"] .timeline-card {
+    background: rgba(10, 25, 49, 0.68);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.16);
 }
 .timeline-card:hover {
     border-color: var(--text-black);

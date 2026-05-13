@@ -308,17 +308,18 @@
     }
 
     /* --------------------------------------------------------
-       Dynamic Background based on time of day
+       Dynamic Background based on time of day & visual day
        -------------------------------------------------------- */
     function wireDynamicBackground() {
-        const hero = document.querySelector('.hero-dynamic-bg');
-        if (!hero) return;
+        let currentTestHour = undefined;
+        let currentTestDay = undefined;
 
-        function updateBackground(testHour) {
+        function updateBackground() {
             const now = new Date();
-            const hour = testHour !== undefined ? testHour : now.getHours();
+            const hour = currentTestHour !== undefined ? currentTestHour : now.getHours();
+            
+            // Period detection
             let period = 'day';
-
             if (hour >= 5 && hour < 10) period = 'morning';
             else if (hour >= 10 && hour < 14) period = 'day';
             else if (hour >= 14 && hour < 18) period = 'afternoon';
@@ -326,14 +327,22 @@
             else if (hour >= 20 && hour < 23) period = 'evening';
             else period = 'night';
 
-            // Update body attribute
-            document.body.setAttribute('data-time', period);
+            // Visual Day logic (Cycles every 3 days)
+            const TOTAL_VISUAL_DAYS = 3;
+            const visualDayValue = currentTestDay !== undefined 
+                ? currentTestDay 
+                : ((now.getDate() - 1) % TOTAL_VISUAL_DAYS) + 1;
+            
+            const visualDayStr = String(visualDayValue).padStart(2, '0');
+            const backgroundPath = `assets/backgrounds/dynamic/day-${visualDayStr}-${period}.webp`;
 
-            // Update CSS variable for the background image
-            const bgUrl = `url('assets/backgrounds/background-${period}.webp')`;
-            hero.style.setProperty('--hero-bg', bgUrl);
+            // Update body dataset for CSS overrides
+            document.body.dataset.time = period;
 
-            console.log(`[DynamicBG] Time: ${hour}h, Period: ${period}`);
+            // Update CSS variable for site-wide background
+            document.documentElement.style.setProperty('--site-bg', `url("${backgroundPath}")`);
+
+            console.log(`[DynamicBG] VisualDay: ${visualDayValue}, Time: ${hour}h, Period: ${period}`);
         }
 
         // Run immediately
@@ -342,30 +351,53 @@
         // Check every minute
         setInterval(updateBackground, 60000);
 
-        // Expose to window for easy testing
-        // Example: window.setPortfolioTime(21)
-        window.setPortfolioTime = (h) => updateBackground(h);
+        // --- DEBUG FUNCTIONS ---
 
-        // Debug function to cycle through all backgrounds
+        // Test a specific hour: window.setPortfolioTime(19)
+        window.setPortfolioTime = (h) => {
+            currentTestHour = h;
+            updateBackground();
+        };
+
+        // Test a specific visual day (1-3): window.setPortfolioDay(2)
+        window.setPortfolioDay = (d) => {
+            currentTestDay = d;
+            updateBackground();
+        };
+
+        // Test everything: window.testAllPortfolioBackgrounds()
         window.testAllPortfolioBackgrounds = function () {
-            const hours = [8, 12, 15, 19, 21, 1];
-            let index = 0;
+            const periods = [8, 12, 15, 19, 21, 1];
+            const days = [1, 2, 3];
+            let dIdx = 0;
+            let pIdx = 0;
 
-            function testNext() {
-                window.setPortfolioTime(hours[index]);
-                console.log(`[Test] Showing background for hour: ${hours[index]}h`);
-                index++;
+            console.log("--- Starting Full Background Test Cycle ---");
 
-                if (index < hours.length) {
-                    setTimeout(testNext, 2500); // 2.5s between each background
+            function nextStep() {
+                window.setPortfolioDay(days[dIdx]);
+                window.setPortfolioTime(periods[pIdx]);
+                
+                pIdx++;
+                if (pIdx >= periods.length) {
+                    pIdx = 0;
+                    dIdx++;
+                }
+
+                if (dIdx < days.length) {
+                    setTimeout(nextStep, 2000); // 2s per background
                 } else {
-                    console.log("[Test] Cycle complete.");
-                    // Return to current time after test
-                    setTimeout(() => updateBackground(), 2500);
+                    console.log("--- Full Test Cycle Complete ---");
+                    // Reset to real time after 3s
+                    setTimeout(() => {
+                        currentTestHour = undefined;
+                        currentTestDay = undefined;
+                        updateBackground();
+                    }, 3000);
                 }
             }
 
-            testNext();
+            nextStep();
         };
     }
 })();
