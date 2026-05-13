@@ -464,7 +464,7 @@ section {
     transition: var(--transition);
 }
 .profil-card:hover {
-    border-color: var(--accent-bright);
+    border-color: var(--text-black);
     box-shadow: var(--shadow-md);
 }
 
@@ -597,7 +597,7 @@ section {
 }
 .comp-card:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-bright);
+    border-color: var(--text-black);
     box-shadow: var(--shadow-md);
 }
 .comp-header {
@@ -785,15 +785,14 @@ section {
 
 .project-card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent-bright);
+    border-color: var(--text-black);
 }
 .project-card:hover::before {
-    box-shadow: 0 24px 60px rgba(217, 119, 87, 0.18);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
 }
 
 .project-card.highlight-card {
-    border-width: 2px;
-    border-color: var(--accent-bright);
+    border-color: var(--border-color);
     background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
 }
 
@@ -995,7 +994,7 @@ section {
     transition: var(--transition);
 }
 .timeline-card:hover {
-    border-color: var(--accent-bright);
+    border-color: var(--text-black);
     transform: translateX(4px);
     box-shadow: var(--shadow-sm);
 }
@@ -1154,8 +1153,8 @@ section {
     line-height: 1.4;
 }
 .contact-card:not(.contact-card--static):hover {
-    background: rgba(217, 119, 87, 0.10);
-    border-color: var(--accent-bright);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-4px);
 }
 .contact-card--static {
